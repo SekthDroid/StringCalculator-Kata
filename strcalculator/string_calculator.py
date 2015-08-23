@@ -6,7 +6,7 @@ class StringCalculator(object):
         return param.replace("//" + delimiter + "\n", "")
 
     def fetch_numbers_with_delimiter(self, delimiter, param):
-        return [int(i) for i in param.split(delimiter)]
+        return [int(i) for i in param.split(delimiter) if int(i) < 1001]
 
     def raise_negative_errors_if_needed(self, numbers):
         negatives = [str(i) for i in numbers if i < 0]

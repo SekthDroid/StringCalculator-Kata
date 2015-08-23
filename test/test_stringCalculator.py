@@ -38,3 +38,7 @@ class TestStringCalculator(TestCase):
             self.calculator.add("-1,-2,-3")
         except ValueError as e:
             self.assertEqual(str(e), "negatives not allowed: -1,-2,-3")
+
+    def test_should_not_sum_negative_numbers(self):
+        self.assertEqual(2, self.calculator.add("2,1001"))
+        self.assertEqual(1002, self.calculator.add("2,1000"))
