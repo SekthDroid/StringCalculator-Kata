@@ -27,3 +27,7 @@ class TestStringCalculator(TestCase):
     def test_should_handle_new_lines_between_numbers(self):
         self.assertEqual(6, self.calculator.add("1\n2,3"))
         self.assertEqual(10, self.calculator.add("1\n2,3\n4"))
+
+    def test_should_handle_new_delimiters_separated_by_a_new_line(self):
+        self.assertEqual(6, self.calculator.add("//;\n1;2;3"))
+        self.assertEqual(7, self.calculator.add("//;\n1;2;4"))
