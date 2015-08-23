@@ -5,7 +5,18 @@ class StringCalculator(object):
     def remove_delimiter_line(self, delimiter, param):
         return param.replace("//" + delimiter + "\n", "")
 
+    def fetch_numbers_with_delimiter(self, delimiter, param):
+        return [int(i) for i in param.split(delimiter)]
+
+    def raise_negative_errors_if_needed(self, numbers):
+        negatives = [str(i) for i in numbers if i < 0]
+        if len(negatives) > 0:
+            raise ValueError("negatives not allowed: %s" % ",".join(negatives))
+
     def add(self, param):
+        if not param:
+            return 0
+
         delimiter = ","
         if "//" in param:
             delimiter = param[2]
@@ -15,14 +26,9 @@ class StringCalculator(object):
             param = param.replace("\n", delimiter)
 
         if delimiter in param:
-            numbers = param.split(delimiter)
-            negatives = [int(i) for i in numbers if int(i) < 0]
-            if len(negatives) > 0:
-                raise ValueError("negatives not allowed: %s" % ",".join(numbers))
-            result = sum([int(i) for i in numbers])
-            return result
+            numbers = self.fetch_numbers_with_delimiter(delimiter, param)
+            self.raise_negative_errors_if_needed(numbers)
 
-        if param:
-            return int(param)
+            return sum(numbers)
 
-        return 0
+        return int(param)
