@@ -2,4 +2,5 @@ __author__ = 'SekthDroid'
 
 
 class StringCalculator(object):
-    pass
+    def add(self, param):
+        return 0
