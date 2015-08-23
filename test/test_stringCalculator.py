@@ -31,3 +31,10 @@ class TestStringCalculator(TestCase):
     def test_should_handle_new_delimiters_separated_by_a_new_line(self):
         self.assertEqual(6, self.calculator.add("//;\n1;2;3"))
         self.assertEqual(7, self.calculator.add("//;\n1;2;4"))
+
+    def test_should_raise_error_if_negative_number_is_passed(self):
+        self.assertRaises(ValueError, self.calculator.add, "-1,2")
+        try:
+            self.calculator.add("-1,-2,-3")
+        except ValueError as e:
+            self.assertEqual(str(e), "negatives not allowed: -1,-2,-3")
