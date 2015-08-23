@@ -23,3 +23,7 @@ class TestStringCalculator(TestCase):
     def test_should_return_sum_of_unknown_amount_of_numbers(self):
         self.assertEqual(6, self.calculator.add("1,2,3"))
         self.assertEqual(45, self.calculator.add("1,2,3,4,5,6,7,8,9"))
+
+    def test_should_handle_new_lines_between_numbers(self):
+        self.assertEqual(6, self.calculator.add("1\n2,3"))
+        self.assertEqual(10, self.calculator.add("1\n2,3\n4"))

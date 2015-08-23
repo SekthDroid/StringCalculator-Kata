@@ -3,6 +3,9 @@ __author__ = 'SekthDroid'
 
 class StringCalculator(object):
     def add(self, param):
+        if "\n" in param:
+            param = param.replace("\n", ",")
+            
         if "," in param:
             numbers = param.split(",")
             result = sum([int(i) for i in numbers])
