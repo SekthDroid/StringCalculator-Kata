@@ -5,8 +5,6 @@ __author__ = 'SekthDroid'
 
 
 class TestStringCalculator(TestCase):
-
-
     def setUp(self):
         super().setUp()
         self.calculator = StringCalculator()
@@ -17,3 +15,7 @@ class TestStringCalculator(TestCase):
     def test_should_return_number_if_only_1_number_is_passed(self):
         self.assertEqual(1, self.calculator.add("1"))
         self.assertEqual(2, self.calculator.add("2"))
+
+    def test_should_return_sum_of_2_numbers(self):
+        self.assertEqual(3, self.calculator.add("1,2"))
+        self.assertEqual(5, self.calculator.add("2,3"))
