@@ -19,3 +19,7 @@ class TestStringCalculator(TestCase):
     def test_should_return_sum_of_2_numbers(self):
         self.assertEqual(3, self.calculator.add("1,2"))
         self.assertEqual(5, self.calculator.add("2,3"))
+
+    def test_should_return_sum_of_unknown_amount_of_numbers(self):
+        self.assertEqual(6, self.calculator.add("1,2,3"))
+        self.assertEqual(45, self.calculator.add("1,2,3,4,5,6,7,8,9"))
